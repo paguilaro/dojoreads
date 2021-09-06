@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block titulo %}Nueva Revision{% endblock %}
+
+{% block botones_superiores %}
+    <a class="btn btn-outline-success ms-3" href="/">Home</a>          
+    <a class="btn btn-outline-warning" href="/logout">Logout</a>
+{% endblock %}
+
+{% block contenido %}
+<h3>Anada un libro y una nueva revision</h3>
+<div class="row">
+    <form>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Titulo del libro</label>
+            <input type="email" class="form-control" aria-describedby="" .name="book_title">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Autor</label>
+            <select class="form-select" aria-label="Default select example" name="author_id">
+                <option selected>Seleccione un Autor</option>
+                <option value="1">Marcela Paz</option>
+                <option value="2">Paulo Cohelo</option>
+                <option value="3">Anita Alvarado</option>
+            </select>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <div class="mb-3">
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" nama="comment"></textarea>
+                <label for="floatingTextarea">Comentario</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Calificacion</label>
+            <select class="form-select" aria-label="Default select example" name="stars">
+                <option selected>Evalue</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Comentar</button>
+      </form>
+</div>
+
+
+{% endblock %}
+{% block libreria %}
+{% endblock %}
