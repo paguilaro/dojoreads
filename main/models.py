@@ -48,7 +48,7 @@ class User(models.Model):
         return f"{self.name}"
 
 
-class Author(models.Model):
+class Authors(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -62,7 +62,7 @@ class Author(models.Model):
 
 class Books(models.Model):
     name = models.CharField(max_length=255)
-    author = models.ForeignKey(Authors, related_name='book', on_delete=models.CASCADE)
+    author = models.ForeignKey(Authors, related_name='books', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -75,7 +75,7 @@ class Books(models.Model):
 
 class Reviews(models.Model):
     text = models.TextField()
-    book = models.ForeignKey(Book, related_name='reviews', on_delete=models.CASCADE)
+    book = models.ForeignKey(Books, related_name='reviews', on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

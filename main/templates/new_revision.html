@@ -19,9 +19,9 @@
             <label for="exampleInputEmail1" class="form-label">Autor</label>
             <select class="form-select" aria-label="Default select example" name="author_id">
                 <option selected>Seleccione un Autor</option>
-                <option value="1">Marcela Paz</option>
-                <option value="2">Paulo Cohelo</option>
-                <option value="3">Anita Alvarado</option>
+                {% for author in authors %}
+                    <option value="{{authors.id}}">{{ author.name }}</option>
+                {% endfor %}}
             </select>
         </div>
         <div class="mb-3 form-check">

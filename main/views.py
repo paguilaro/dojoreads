@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 import bcrypt
 from .decorators import login_required
-
+from .models import Authors
 
 @login_required
 def index(request):
@@ -15,9 +15,9 @@ def index(request):
 
 @login_required
 def revision(request):
-
+    authors = Authors.objects.all()
     context = {
-        'saludo': 'Hola'
+        'authors': authors
     }
     return render(request, 'new_revision.html', context)
     
