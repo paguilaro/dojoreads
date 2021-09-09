@@ -10,27 +10,28 @@
 {% block contenido %}
 <h3>Anada un libro y una nueva revision</h3>
 <div class="row">
-    <form>
+    <form action="" method='POST'>
+        {% csrf_token %}
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Titulo del libro</label>
-            <input type="email" class="form-control" aria-describedby="" .name="book_title">
+            <input type="text" class="form-control" aria-describedby="" name="book_title">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Autor</label>
-            <select class="form-select" aria-label="Default select example" name="author_id">
+            <select class="form-select" aria-label="Default select example" name="author_id" id="author_id">
                 <option selected>Seleccione un Autor</option>
                 {% for author in authors %}
-                    <option value="{{authors.id}}">{{ author.name }}</option>
-                {% endfor %}}
+                    <option value="{{author.id}}">{{ author.name }}</option>
+                {% endfor %}
+                <option value="other">Agregar nuevo</option>
             </select>
+            Nuevo Autor:
+            <input type="text" name="new_author" id="new_author" class="form-control ">
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+        
         <div class="mb-3">
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" nama="comment"></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="comment"></textarea>
                 <label for="floatingTextarea">Comentario</label>
             </div>
         </div>
@@ -49,7 +50,17 @@
       </form>
 </div>
 
+<script>
 
+    $('#author_id').on('change',function(){
+        if($(this).val()=='other'){
+            $('#new_author').removeClass('d-none');
+        }
+        else{
+            $('#new_author').addClass('d-none');
+        }
+    });
+</script>
 {% endblock %}
 {% block libreria %}
 {% endblock %}

@@ -61,16 +61,23 @@ class Authors(models.Model):
 
 
 class Books(models.Model):
-    name = models.CharField(max_length=255)
+    CHOICES = (
+        ("general", 'General'),
+        ("auto_ayuda", 'Auto ayuda'),
+        ("programacion", 'Programacion'), 
+        ("economia", 'Economia'),             
+    )
+    title = models.CharField(max_length=255)
     author = models.ForeignKey(Authors, related_name='books', on_delete=models.CASCADE)
+    category = models.CharField(max_length=255, choices=CHOICES, default = 'general')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.title}"
 
     def __repr__(self):
-        return f"{self.name}"
+        return f"{self.title}"
 
 
 class Reviews(models.Model):
